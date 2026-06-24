@@ -1,4 +1,5 @@
-Set-Content -Path "C:\Users\USER\Desktop\app.py" -Value 'import streamlit as st
+# DOYDOY HIGH-SPEED PRODUCTION CLOUD APP SYSTEM
+import streamlit as st
 import ccxt
 import pandas as pd
 import requests
@@ -38,7 +39,6 @@ def fetch_portfolio_metrics():
         for pos in positions:
             amt = float(pos.get("positionAmt", 0))
             if amt != 0.0:
-                # FIXED CAMELCASE API MAPPING
                 active_trades.append({
                     "Symbol": pos.get("symbol"),
                     "Size": amt,
@@ -75,7 +75,7 @@ if st.button("🚨 FORCE EMERGENCY CLOSE ALL TRADES", use_container_width=True):
                 side = "sell" if pos["Size"] > 0 else "buy"
                 exchange.create_order(sym, "MARKET", side, size)
             url = f"https://telegram.org{TELEGRAM_BOT_TOKEN}/sendMessage"
-            payload = {"chat_id": TELEGRAM_CHAT_ID, "text": "🚨 <b>[EMERGENCY PANIC]</b> Manual Emergency Close All executed.", "parse_mode": "HTML"}
+            payload = {"chat_id": TELEGRAM_CHAT_ID, "text": "🚨 <b>[EMERGENCY PANIC]</b> Manual Emergency Close All executed from your Phone app.", "parse_mode": "HTML"}
             requests.post(url, json=payload, timeout=5)
             st.success("Wiped account clean! All active risk assets closed.")
             time.sleep(2)
@@ -98,4 +98,4 @@ with col_stop:
 if st.session_state.radar_active:
     st.success("📡 5-Second Velocity Polling Engine running inside cloud threads...")
 else:
-    st.info("💤 Standby Mode.")' -Encoding utf8
+    st.info("💤 Standby Mode.")
